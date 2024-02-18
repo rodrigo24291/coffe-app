@@ -1,0 +1,7 @@
+<div class="md:flex">
+<app-sidebar [categorias]="categorias" (categorySelection)="CategoriaElegida($event)"></app-sidebar>
+    <div class="flex-1 h-screen overflow-y-scroll bg-gray-200 p-3">
+       <app-producto [productos]="Productos" (ProcutoSelect)="select($event)"></app-producto>
+    </div>
+<app-resumen [ProductoSelect]="ProductosSelect" (EliminarProducto)="eliminarproducto($event)" [TotalGastos]="totalgasto" ></app-resumen>
+</div>

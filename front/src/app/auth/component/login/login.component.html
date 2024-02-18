@@ -1,0 +1,44 @@
+<h1 class="text-4xl font-black"> Iniciar sesion</h1>
+<p> Para solicitar un pedido debes iniciar sesion</p>
+
+<div class="bg-white shadow-md rounded-md mt-10 px-5 py-10">
+    <form  [formGroup]="Formlogin" (ngSubmit)="login()">
+        
+        <div class="mb-4">
+            <label class="text-slate-800"
+            for="email"
+            >Email:</label>
+            <input type="email" 
+             name="email"
+             formControlName="email"
+             id="email" 
+             class="mt-2 w-full p-3 bg-gray-50" 
+             placeholder="Tu email">
+             <span *ngIf="Invalied('password')">
+                Error o Pasword Incorrecto
+             </span>
+        </div>
+        <div class="mb-4">
+            <label class="text-slate-800"
+            for="password"
+            >Pasword:</label>
+            <input type="text" 
+             name="password"
+             id="password" 
+             formControlName="password"
+             class="mt-2 w-full p-3 bg-gray-50" 
+             placeholder="Tu pasword">
+             <span *ngIf="Invalied('password')">
+                Error o Pasword Incorrecto
+             </span>
+        </div>
+        <input type="submit" 
+        value="Iniciar sesion"
+        class="bg-indigo-600 w-full hover:bg-indigo-800 text-white mt-5 p-3 uppercase
+        font-bold  cursor-pointer"
+        >
+    </form>
+    <div class="mt-5">
+        <a routerLink="../registro">¿No tienes cuenta? Crea una</a>
+    </div>
+</div>

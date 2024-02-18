@@ -1,0 +1,18 @@
+<h1 class="text-4xl font-black">Inicio</h1>
+<p class="text-2xl my-10">
+    Elige y personaliza tu pedido a continuacion
+</p>
+
+<div class="grid gap-4 grid-cols-1 md-grid-cols-2 xl:grid-cols-3">
+    <div class="border p-3 shadow bg-white" *ngFor="let producto of Productos">
+        <img [src]="'assets/img/'+producto.imagen+'.jpg'" [alt]="producto.nombre">
+        <div class="p-5">
+            <h3 class="text-2xl font-bold">{{ producto.nombre }}</h3>
+            <p class="mt-5 font-black text-4xl text-amber-500">{{ producto.precio|currency: 'USD' }}</p>
+            <button *ngIf="producto.disponible == 1" (click)="CambiarDisponibilidad(producto.id)" type="button" class="bg-red-600 hover:bg-red-800 text-white w-full mt-5 p-3 uppercase font-bold"  >Cambiar a Producto Agotado</button>
+            <button *ngIf="producto.disponible == 0" (click)="CambiarDisponibilidad(producto.id)" type="button" class="bg-indigo-600 hover:bg-indigo-800 text-white w-full mt-5 p-3 uppercase font-bold"  >Cambiar a Producto Disponible</button>
+        </div>
+    </div>
+</div>
+
+

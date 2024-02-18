@@ -1,0 +1,68 @@
+<h1 class="text-4xl font-black">Inicio</h1>
+<p class="text-2xl my-10">
+    Elige y personaliza tu pedido a continuacion
+</p>
+
+<div class="grid gap-4 grid-cols-1 md-grid-cols-2 xl:grid-cols-3">
+    <div class="border p-3 shadow bg-white" *ngFor="let producto of productos">
+        <img [src]="'assets/img/'+producto.imagen+'.jpg'" [alt]="producto.nombre">
+        <div class="p-5">
+            <h3 class="text-2xl font-bold">{{ producto.nombre }}</h3>
+            <p class="mt-5 font-black text-4xl text-amber-500">{{ producto.precio|currency: 'USD' }}</p>
+            <button type="button" class="bg-indigo-600 hover:bg-indigo-800 text-white w-full mt-5 p-3 uppercase font-bold" (click)="showDialog(producto.id)" >Agregar</button>
+        </div>
+    </div>
+</div>
+
+
+<p-dialog [(visible)]="visible" [style]="{width: '50vw'}">
+    <!-- Contenido del modal -->
+    <div class="flex items-center justify-between">
+      <!-- Lado izquierdo: Imagen -->
+      <img [src]="'assets/img/' + modaldata?.imagen + '.jpg'" alt="Producto Imagen" class="max-w-full max-h-96">
+  
+      <!-- Lado derecho: Detalles del Producto -->
+      <div class="flex-1 p-4">
+        <!-- Título y Subtítulo -->
+        <h2 class="text-2xl font-bold">{{ modaldata?.nombre }}</h2>
+  
+        <!-- Precio en la mitad -->
+        <div class="my-4">
+          <p class="text-xl">Precio por unidad: {{ modaldata?.precio |currency: 'USD' }}</p>
+        </div>
+  
+        <div class="my-4">
+
+            <p class="text-xl">Precio total: {{ precioTotal |currency: 'USD' }}</p>
+
+          </div>
+  
+        
+        <!-- Botones: Agregar, Disminuir, Ordenar, Cancelar -->
+        <div class="flex justify-between">
+          <!-- Botones para cambiar la cantidad -->
+          <div class="flex items-center">
+            <button class="bg-gray-300 text-gray-700 px-2 py-1 rounded-l hover:bg-gray-400" (click)="aumentar(-1)">
+              <span class="pi pi-minus"></span>
+            </button>
+            <p class="px-2 py-1">{{ cantidad }}</p>
+            <button class="bg-gray-300 text-gray-700 px-2 py-1 rounded-r hover:bg-gray-400" (click)="aumentar(+1)">
+              <span class="pi pi-plus"></span>
+            </button>
+          </div>
+  
+          <!-- Botones Ordenar y Cancelar -->
+          <div class="flex">
+            <button class="bg-blue-500 text-white px-4 py-2 rounded flex items-center justify-center hover:bg-blue-700 flex-shrink-0" (click)="pedidos()">
+              <span class="mr-2 pi pi-check"></span> Solicitar Pedido
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </p-dialog>
+  
+<div class="card flex justify-content-center">
+    <p-toast [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'1000ms'" [hideTransitionOptions]="'1000ms'" [showTransformOptions]="'translateX(100%)'"></p-toast>
+   
+</div>

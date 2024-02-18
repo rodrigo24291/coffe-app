@@ -1,0 +1,72 @@
+<h1 class="text-4xl font-black"> Crea tu cuenta</h1>
+<p> Crea tu cuenta llenando tu formulario</p>
+
+<div class="bg-white shadow-md rounded-md mt-10 px-5 py-10">
+    <form  [formGroup]="formuser" (ngSubmit)="registerUser()">
+        <div class="mb-4">
+            <label class="text-slate-800"
+            for="name"
+            >Nombre:</label>
+            <input type="text" 
+            formControlName="name"
+             name="name"
+             id="name" 
+             class="mt-2 w-full p-3 bg-gray-50" 
+             placeholder="Tu nombre">
+             <span class="text-red-600 font-bold uppercase" *ngIf="invalidField('name')">
+                {{ errorMessage('name') }}
+             </span>
+        </div>
+        <div class="mb-4">
+            <label class="text-slate-800"
+            for="email"
+            >Email:</label>
+            <input type="email" 
+            formControlName="email"
+             name="email"
+             id="email" 
+             class="mt-2 w-full p-3 bg-gray-50" 
+             placeholder="Tu email">
+             <span class="text-red-600 font-bold uppercase" *ngIf="invalidField('email')">
+                {{ errorMessage('email') }}
+             </span>
+        </div>
+        <div class="mb-4">
+            <label class="text-slate-800"
+            for="password"
+            >Pasword:</label>
+            <input type="password" 
+             name="password"
+             formControlName="password"
+             id="password" 
+             class="mt-2 w-full p-3 bg-gray-50" 
+             placeholder="Tu pasword">
+        </div>
+        <span class="text-red-600 font-bold uppercase" *ngIf="invalidField('password')">
+            {{ errorMessage('password') }}
+         </span>
+        <div class="mb-4">
+            
+            <label class="text-slate-800"
+            for="password_repeat"
+            >Repite tu pasword:</label>
+            <input type="password" 
+             name="password_repeat"
+             formControlName="password_repeat"
+             id="password_repeat" 
+             class="mt-2 w-full p-3 bg-gray-50" 
+             placeholder="Repite tu pasword">
+             <span class="text-red-600 font-bold uppercase" *ngIf="invalidField('password_repeat')">
+                {{ errorMessage('password_repeat') }}
+             </span>
+        </div>
+        <input type="submit" 
+        value="Crear cuenta"
+        class="bg-indigo-600 w-full hover:bg-indigo-800 text-white mt-5 p-3 uppercase
+        font-bold  cursor-pointer"
+        >
+    </form>
+    <div class="mt-5">
+        <a routerLink="../login">¿Ya tienes cuenta ? Inicia sesion</a>
+    </div>
+</div>

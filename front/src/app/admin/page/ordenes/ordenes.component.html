@@ -1,0 +1,40 @@
+<h1 class="text-4xl font-black">Ordenes</h1>
+<p class="text-2xl my-10">Manejas las ordenes desde aquí</p>
+
+<div class="flex flex-col md:flex-row">
+  <div class="p-5 bg-white shadow space-y-2 border-b ml-5 flex flex-col flex-1" *ngFor="let pedido of Pedidos">
+    
+      <p class="text-xl font-bold text-slate-600">
+        Contenido del pedido:
+      </p>
+
+      <div *ngFor="let product of pedido.productos" class="border-b border-b-slate-200 last-of-type:border-none py-4">   
+        <p class="text-sm">
+          ID:{{ product.id }}
+        </p>
+
+        <p>
+          {{ product.nombre }}
+        </p>
+
+        <p>
+          Cantidad:
+          <span class="font-bold">{{ product.pivot.cantidad }}</span>  
+        </p>
+      </div>
+
+      <p class="text-lg font-bold text-slate-600">
+        Cliente:
+        <span class="font-normal">{{ pedido.usuario.name }}</span>
+      </p>
+      
+      <p class="text-lg font-bold text-ambar-600">
+        Total a pagar:
+        <span class="font-normal text-slate-600">{{ pedido.total }}</span>
+      </p>
+    
+    <button type="button" (click)="ConfirmarPedido(pedido.id)" class="bg-indigo-600 hover:bg-indigo-800 px-5 py-2 rounded uppercase font-bold text-white text-center cursor-pointer w-full self-end">
+      Confirmar pedido
+    </button>
+  </div>
+</div>
